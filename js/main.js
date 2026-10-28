@@ -74,7 +74,7 @@
       }
     });
     hero
-      .fromTo('.hero-window img', { scale: 1.45 }, { scale: 1, ease: 'none', duration: 1 }, 0)
+      .fromTo('.hero-window img', { scale: 1.5 }, { scale: 1, ease: 'none', duration: 1 }, 0)
       .to('.hero-sky', { opacity: 0, ease: 'none', duration: 1 }, 0)
       .to('.hero-title', { y: desktop ? -80 : -40, scale: desktop ? 0.9 : 1, transformOrigin: 'left top', autoAlpha: 0, ease: 'power1.in', duration: 0.6 }, 0.35)
       .to('.hero-scroll', { autoAlpha: 0, duration: 0.15 }, 0)
@@ -88,7 +88,7 @@
     }
 
     /* ---------- 2. statement: words light up one by one ---------- */
-    gsap.fromTo('.statement-text .w', { opacity: 0.12 }, {
+    gsap.fromTo('.statement-text .w', { opacity: 0.22 }, {
       opacity: 1, stagger: 0.1, ease: 'none',
       scrollTrigger: {
         trigger: '.statement',
@@ -157,21 +157,23 @@
     return () => gsap.set(navMark, { clearProps: 'all' });
   });
 
-  /* ---------- day to night: the page colour follows the section in view
-     (created after the pinned sections so positions include their scroll length) ---------- */
+  /* ---------- day to night: the page colour follows the section in view ----------
+     Checks which section sits at the middle of the screen (one frame after each scroll update,
+     once pinned sections have settled), so the colour is right even after a jump. */
   const themeMeta = document.querySelector('meta[name="theme-color"]');
-  document.querySelectorAll('[data-theme]').forEach((sec) => {
-    ScrollTrigger.create({
-      trigger: sec,
-      start: 'top 55%',
-      end: 'bottom 55%',
-      onToggle: (self) => {
-        if (!self.isActive) return;
-        gsap.to(root, { '--bg': sec.dataset.bg, '--fg': sec.dataset.fg, duration: 1.1, ease: 'power2.out', overwrite: 'auto' });
-        if (themeMeta) themeMeta.setAttribute('content', sec.dataset.bg);
-      }
-    });
-  });
+  const themed = [...document.querySelectorAll('[data-theme]')];
+  let current = null, queued = false;
+  const pickTheme = () => {
+    queued = false;
+    const line = window.innerHeight * 0.55;
+    const sec = themed.find((s) => { const r = s.getBoundingClientRect(); return r.top <= line && r.bottom > line; });
+    if (!sec || sec === current) return;
+    current = sec;
+    gsap.to(root, { '--bg': sec.dataset.bg, '--fg': sec.dataset.fg, duration: 1.1, ease: 'power2.out', overwrite: 'auto' });
+    if (themeMeta) themeMeta.setAttribute('content', sec.dataset.bg);
+  };
+  const queuePick = () => { if (!queued) { queued = true; requestAnimationFrame(pickTheme); } };
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: queuePick, onRefresh: queuePick });
 
   /* ---------- menu bar gets a soft background once past the hero ---------- */
   ScrollTrigger.create({ trigger: '.statement', start: 'top 80px', end: 'max', toggleClass: { targets: '.nav', className: 'solid' } });

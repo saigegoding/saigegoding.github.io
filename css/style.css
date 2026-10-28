@@ -47,6 +47,9 @@ body {
   font-size: var(--step-0);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Bodoni's optical size: 28 keeps the hairlines solid at big sizes (no broken, pixelated strokes) */
+  font-variation-settings: "opsz" 28;
   overflow-x: hidden;
 }
 
@@ -55,7 +58,7 @@ body::after {
   content: "";
   position: fixed; inset: 0;
   pointer-events: none;
-  z-index: 100;
+  z-index: -1;
   opacity: .09;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .4 0 0 0 0 .3 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -139,8 +142,8 @@ html:not(.motion) [data-theme] { background: var(--sbg); color: var(--sfg); }
 .hero-name sup { font-size: .13em; top: .6em; margin-left: -.15em; }
 .hero-tag { font-family: var(--serif); font-style: italic; font-size: var(--step-2); margin: .5em 0 .4em; color: var(--burgundy); }
 .hero-sub { max-width: 34ch; font-size: var(--step-0); margin: 0; }
-.hero-window { justify-self: center; height: min(78svh, 820px); aspect-ratio: 11 / 20; }
-.hero-window img { transform-origin: 30% 45%; }
+.hero-window { justify-self: center; height: min(78svh, 780px); aspect-ratio: 4 / 5; }
+.hero-window img { transform-origin: 50% 32%; }
 .hero-scroll {
   position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
   font-size: var(--step--1); letter-spacing: .08em; margin: 0;
@@ -166,25 +169,27 @@ html:not(.motion) [data-theme] { background: var(--sbg); color: var(--sfg); }
 
 /* ---------- 3. what I make ---------- */
 .make { padding-left: 0; padding-right: 0; overflow: hidden; }
-.make-head { padding: 0 var(--gutter); display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); align-items: end; margin-bottom: clamp(36px, 6vh, 64px); }
+.make { padding-top: clamp(88px, 12vh, 130px); }
+.make-head { padding: 0 var(--gutter); display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); align-items: end; margin-bottom: clamp(24px, 4vh, 44px); }
 .make-head p { max-width: 42ch; margin: 0; }
 .make-track { display: flex; gap: clamp(16px, 2vw, 28px); padding: 0 var(--gutter); width: max-content; }
 .card {
-  width: min(78vw, 980px);
-  min-height: min(68svh, 640px);
+  width: min(56vw, 760px);
+  min-height: min(60svh, 540px);
   background: var(--cbg); color: var(--cfg);
-  padding: clamp(28px, 4vw, 56px);
-  display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: auto 1fr; gap: 20px clamp(24px, 4vw, 56px);
+  padding: clamp(22px, 2.6vw, 40px);
+  display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: auto 1fr; gap: 16px clamp(20px, 2.6vw, 36px);
   border-radius: 2px;
 }
-.card h3 { grid-column: 1 / -1; font-size: var(--step-4); line-height: .95; letter-spacing: -0.02em; }
-.card-lede { font-size: var(--step-1); font-family: var(--serif); line-height: 1.35; margin: 0; }
+.card h3 { grid-column: 1 / -1; font-size: clamp(2.2rem, 1.2rem + 2.6vw, 4rem); line-height: .95; letter-spacing: -0.02em; }
+.card-lede { font-size: clamp(1.1rem, 1rem + .4vw, 1.35rem); font-family: var(--serif); line-height: 1.35; margin: 0; }
+.card ul { font-size: var(--step--1); }
 .card ul { list-style: none; padding: 0; margin: 0; align-self: start; }
-.card li { padding: 10px 0; border-top: 1px solid color-mix(in srgb, var(--cfg) 25%, transparent); }
-.card-example { grid-column: 1 / -1; align-self: end; border-top: 1px solid var(--gold); padding-top: 18px; max-width: 62ch; }
+.card li { padding: 8px 0; border-top: 1px solid color-mix(in srgb, var(--cfg) 25%, transparent); }
+.card-example { grid-column: 1 / -1; align-self: end; border-top: 1px solid var(--gold); padding-top: 14px; max-width: 62ch; font-size: var(--step--1); }
 .ex-label { font-size: var(--step--1); color: var(--gold); margin: 0 0 4px; }
 .card .card-example:last-child p:last-child { margin: 0; }
-.ex-title { font-family: var(--serif); font-style: italic; font-size: var(--step-2); line-height: 1.1; margin: 0 0 8px; }
+.ex-title { font-family: var(--serif); font-style: italic; font-size: var(--step-1); line-height: 1.1; margin: 0 0 6px; }
 
 @media (max-width: 860px) {
   .make-head { grid-template-columns: 1fr; gap: 16px; }
