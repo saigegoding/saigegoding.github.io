@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Made by Saige™ | Private events &amp; itineraries in New York</title>
   <meta name="description" content="Private birthdays, dinners, destination itineraries and New York programs, planned by Saige Goding.">
-  <meta name="theme-color" content="#F2EDE6">
+  <meta name="theme-color" content="#A89A82">
 
   <!-- How the link looks when shared on WhatsApp, iMessage, Instagram etc. -->
   <meta property="og:type" content="website">
@@ -16,16 +16,18 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-  <script>
-    // Turn on scroll effects only when the visitor hasn't asked for reduced motion
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
-  </script>
 </head>
 <body>
+
+<!-- icons used on the page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M3 6l9 7 9-7"/></g></symbol>
+</svg>
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -35,43 +37,46 @@
   </a>
   <nav class="nav-links" aria-label="Main">
     <a href="#make">What I make</a>
+    <a href="#moments">Moments</a>
     <a href="#new-york">New York</a>
-    <a href="#about">About</a>
-    <a href="#contact" class="nav-cta">Inquire</a>
+    <a href="#contact" class="nav-cta">Get in touch</a>
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- 1. HERO: golden hour -->
-  <section class="hero" id="top" data-theme style="--sbg:#F2EDE6;--sfg:#362017" data-bg="#F2EDE6" data-fg="#362017">
-    <div class="hero-sky" aria-hidden="true"></div>
+  <!-- 1. HERO (hide) -->
+  <section class="hero" id="top" data-theme style="--sbg:#A89A82;--sfg:#362017">
     <div class="hero-inner">
       <div class="hero-title">
         <p class="hero-made">Made by</p>
         <h1 class="hero-name">Saige<sup>™</sup></h1>
         <p class="hero-tag">Your New York, made by Saige.</p>
         <p class="hero-sub">Private birthdays, dinners, destination itineraries and New York programs.</p>
+        <div class="icons icons-hero" aria-label="Get in touch">
+          <a class="icon" href="https://wa.me/12038181036?text=Hi%20Saige%2C%20I%27d%20love%20to%20plan%20something%20with%20you." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+          <a class="icon" href="mailto:saigeara@gmail.com?subject=Made%20by%20Saige%20inquiry"><svg><use href="#i-mail"/></svg><span>Email</span></a>
+          <a class="icon" href="https://www.instagram.com/saigegod/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span>Instagram</span></a>
+        </div>
       </div>
       <figure class="hero-window arch">
-        <img src="images/hero-sunset.jpg" alt="Saige at the railing on the East River at sunset, the Manhattan skyline behind her" width="990" height="1800" fetchpriority="high">
+        <img src="images/portrait.jpg" alt="Black and white portrait of Saige in a white satin top" width="1025" height="1053" fetchpriority="high">
       </figure>
     </div>
-    <p class="hero-scroll" aria-hidden="true">Scroll</p>
   </section>
 
-  <!-- 2. STATEMENT: ivory -->
-  <section class="statement" data-theme style="--sbg:#F2EDE6;--sfg:#4E0A0A" data-bg="#F2EDE6" data-fg="#4E0A0A">
+  <!-- 2. STATEMENT (ivory) -->
+  <section class="statement" data-theme style="--sbg:#F2EDE6;--sfg:#4E0A0A">
     <p class="statement-text">I don't just plan events. I plan how a night feels, where it goes, and who you'll remember it with.</p>
   </section>
 
-  <!-- 3. WHAT I MAKE: sand -->
-  <section class="make" id="make" data-theme style="--sbg:#D9CFC0;--sfg:#362017" data-bg="#D9CFC0" data-fg="#362017">
+  <!-- 3. WHAT I MAKE (walnut) -->
+  <section class="make" id="make" data-theme style="--sbg:#44271F;--sfg:#F2EDE6">
     <div class="make-head">
       <h2>What I make</h2>
       <p>Four ways to work together. Every one starts with a conversation and ends with a night, or a trip, that feels like yours.</p>
     </div>
-    <div class="make-track">
+    <div class="make-track" data-lenis-prevent-touch>
 
       <article class="card" style="--cbg:#6B1F17;--cfg:#F2EDE6">
         <h3>Private birthdays</h3>
@@ -138,15 +143,46 @@
       </article>
 
     </div>
+    <p class="swipe-hint" aria-hidden="true">Swipe to see all four</p>
   </section>
 
-  <!-- 4. SAIGE'S NEW YORK: olive -->
-  <section class="ny" id="new-york" data-theme style="--sbg:#5E5530;--sfg:#F2EDE6" data-bg="#5E5530" data-fg="#F2EDE6">
+  <!-- 4. MOMENTS: event photos (burgundy) -->
+  <section class="moments" id="moments" data-theme style="--sbg:#4E0A0A;--sfg:#F2EDE6">
+    <div class="moments-head">
+      <h2>Moments</h2>
+      <p class="moments-lede">Rooms I've helped set, tables I've helped dress, nights I've helped run.</p>
+      <p class="moments-brands-label">I've supported events for</p>
+      <ul class="brands">
+        <li>Olaplex</li><li>Spotify</li><li>IBM</li><li>Loro Piana</li>
+      </ul>
+    </div>
+    <div class="moments-grid">
+      <!-- To add a photo: copy one <figure class="moment"> block, change the image file and caption. -->
+      <figure class="moment">
+        <div class="moment-frame"><img src="images/event-1.jpg" alt="Brand event display: rhute hair products on a tiered mirrored stand with pink ranunculus, under warm amber lighting" loading="lazy" width="1200" height="1600"></div>
+        <figcaption>rhute brand event, New York</figcaption>
+      </figure>
+      <figure class="moment">
+        <div class="moment-frame"><img src="images/event-2.jpg" alt="Lounge tables styled with peonies, rhute products on silver trays and custom newspapers, beside a green velvet banquette" loading="lazy" width="1200" height="1600"></div>
+        <figcaption>Table styling, rhute brand event</figcaption>
+      </figure>
+      <!-- Placeholders: replace each with a real photo when you have one -->
+      <figure class="moment moment-placeholder" style="--pbg:#5E5530">
+        <div class="moment-frame"><p>Photo coming soon</p></div>
+        <figcaption>Next event</figcaption>
+      </figure>
+      <figure class="moment moment-placeholder" style="--pbg:#6B1F17">
+        <div class="moment-frame"><p>Photo coming soon</p></div>
+        <figcaption>Next event</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5. SAIGE'S NEW YORK (olive) -->
+  <section class="ny" id="new-york" data-theme style="--sbg:#5E5530;--sfg:#F2EDE6">
     <div class="ny-intro">
       <h2>Saige's New York</h2>
       <p class="ny-lede">Seven years in New York hospitality. I know where to go, and when I don't, I find out.</p>
-      <figure class="ny-photo ny-photo-a"><img src="images/nyc-street.jpg" alt="Saige in a long grey coat on a Manhattan sidewalk" loading="lazy" width="986" height="1800"></figure>
-      <figure class="ny-photo ny-photo-b"><img src="images/nyc-escalator.jpg" alt="Saige riding an escalator in a fur hat and black outfit" loading="lazy" width="1012" height="1800"></figure>
     </div>
 
     <div class="ny-map-wrap">
@@ -180,53 +216,19 @@
     </div>
   </section>
 
-  <!-- 5. BEYOND NEW YORK: brick -->
-  <section class="beyond" data-theme style="--sbg:#6B1F17;--sfg:#F2EDE6" data-bg="#6B1F17" data-fg="#F2EDE6">
-    <figure class="beyond-window arch"><img src="images/marrakech.jpg" alt="Saige walking through a market in Marrakech under red striped awnings" loading="lazy" width="926" height="1800"></figure>
-    <div class="beyond-text">
-      <h2>Beyond New York</h2>
-      <p>Wherever you're going, I'll find the hotel, the rooftop and the table worth the trip, and plan the days around them. Places I've never been just mean more research.</p>
-      <a href="#contact" class="text-link">Plan a trip</a>
-    </div>
-    <figure class="beyond-small"><img src="images/beach.jpg" alt="Saige under palm trees on a beach" loading="lazy" width="912" height="1800"></figure>
-  </section>
-
-  <!-- 6. WHERE I'VE BEEN: burgundy -->
-  <section class="been" data-theme style="--sbg:#4E0A0A;--sfg:#F2EDE6" data-bg="#4E0A0A" data-fg="#F2EDE6">
-    <h2>Where I've been</h2>
-    <p class="been-lede">I've supported events for</p>
-    <div class="marquee" aria-label="Olaplex, Spotify, IBM and Loro Piana">
-      <div class="marquee-row" aria-hidden="true">
-        <span>Olaplex</span><span>Spotify</span><span>IBM</span><span>Loro Piana</span>
-        <span>Olaplex</span><span>Spotify</span><span>IBM</span><span>Loro Piana</span>
+  <!-- 6. BEYOND NEW YORK (brick) -->
+  <section class="beyond" data-theme style="--sbg:#6B1F17;--sfg:#F2EDE6">
+    <div class="beyond-stage">
+      <h2 class="beyond-title"><span>Beyond</span> <span>New York</span></h2>
+      <div class="beyond-text">
+        <p>Wherever you're going, I'll find the hotel, the rooftop and the table worth the trip, and plan the days around them. Places I've never been just mean more research.</p>
+        <a href="#contact" class="text-link">Plan a trip with me</a>
       </div>
     </div>
-    <ol class="timeline">
-      <li>
-        <p class="tl-when">2024 to now</p>
-        <h3>Tigre, New York</h3>
-        <p>Guest service and private events. Brand activations, product launches and private events: guest lists, VIP care, room setups, and keeping the night seamless.</p>
-      </li>
-      <li>
-        <p class="tl-when">2021 to 2026</p>
-        <h3>Personal assistant to a private New York family</h3>
-        <p>Travel itineraries, hotels, reservations and every time-sensitive request in between, handled with complete discretion.</p>
-      </li>
-      <li>
-        <p class="tl-when">2022 to 2024</p>
-        <h3>The Main Tab</h3>
-        <p>Retail partnerships for a luxury wholesale startup, looking after 3,000+ independent retailers and emerging brands.</p>
-      </li>
-      <li>
-        <p class="tl-when">Education</p>
-        <h3>Baruch College, Zicklin School of Business</h3>
-        <p>BBA in Marketing Management, with a minor in International Business at the Hogeschool van Amsterdam.</p>
-      </li>
-    </ol>
   </section>
 
-  <!-- 7. HOW IT WORKS: walnut -->
-  <section class="how" data-theme style="--sbg:#44271F;--sfg:#F2EDE6" data-bg="#44271F" data-fg="#F2EDE6">
+  <!-- 7. HOW IT WORKS (hide) -->
+  <section class="how" data-theme style="--sbg:#A89A82;--sfg:#362017">
     <div class="how-head">
       <h2>How it works</h2>
       <p>Pricing on request. Every plan is made to measure, so the quote follows the conversation.</p>
@@ -240,30 +242,37 @@
     </ol>
   </section>
 
-  <!-- 8. ABOUT: walnut, darker -->
-  <section class="about" id="about" data-theme style="--sbg:#36201A;--sfg:#F2EDE6" data-bg="#36201A" data-fg="#F2EDE6">
-    <figure class="about-photo"><img src="images/portrait.jpg" alt="Black and white portrait of Saige in a white satin top" loading="lazy" width="1025" height="1053"></figure>
+  <!-- 8. ABOUT (ivory) -->
+  <section class="about" id="about" data-theme style="--sbg:#F2EDE6;--sfg:#362017">
+    <h2>Hi, I'm Saige.</h2>
     <div class="about-text">
-      <h2>Hi, I'm Saige.</h2>
-      <p>I've spent the last seven years in New York hospitality, supporting brand events and launches at Tigre and planning the travel, reservations and days of a private family. Somewhere along the way I became the person friends text when they need a table, a plan or a place to go.</p>
-      <p>Made by Saige is that, for you. Birthdays, dinners, trips and New York weekends, planned around how you want them to feel.</p>
+      <p class="about-big">I've spent the last seven years in New York hospitality, supporting brand events and launches at Tigre and planning the travel, reservations and days of a private family.</p>
+      <p>Somewhere along the way I became the person friends text when they need a table, a plan or a place to go. Made by Saige is that, for you. Birthdays, dinners, trips and New York weekends, planned around how you want them to feel.</p>
       <p class="about-touch">I studied marketing at Baruch College and spent part of my studies at the Hogeschool van Amsterdam, so a little Amsterdam comes along too.</p>
     </div>
   </section>
 
-  <!-- 9. CONTACT: chocolate, night -->
-  <section class="contact" id="contact" data-theme style="--sbg:#24140F;--sfg:#F2EDE6" data-bg="#24140F" data-fg="#F2EDE6">
+  <!-- 9. CONTACT (chocolate) -->
+  <section class="contact" id="contact" data-theme style="--sbg:#362017;--sfg:#F2EDE6">
     <h2 class="contact-title">Let's make something.</h2>
-    <div class="contact-grid">
+    <p class="contact-lede">The quickest way to reach me:</p>
+    <div class="icons icons-big">
+      <a class="icon" href="https://wa.me/12038181036?text=Hi%20Saige%2C%20I%27d%20love%20to%20plan%20something%20with%20you." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+      <a class="icon" href="mailto:saigeara@gmail.com?subject=Made%20by%20Saige%20inquiry"><svg><use href="#i-mail"/></svg><span>Email</span></a>
+      <a class="icon" href="https://www.instagram.com/saigegod/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span>Instagram</span></a>
+    </div>
+
+    <div class="form-card">
+      <h3>Or send an inquiry</h3>
       <form class="form" action="https://formsubmit.co/saigeara@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New inquiry from madebysaige website">
+        <input type="hidden" name="_subject" value="New inquiry from the Made by Saige website">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://saigegoding.github.io/#thanks">
         <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="field"><label for="f-what">What are you planning?</label>
+        <div class="field field-wide"><label for="f-what">What are you planning?</label>
           <select id="f-what" name="planning" required>
             <option value="" disabled selected>Choose one</option>
             <option>Private birthday</option>
@@ -273,22 +282,13 @@
             <option>Something else</option>
           </select>
         </div>
-        <div class="field-row">
-          <div class="field"><label for="f-date">Date</label><input id="f-date" name="date" type="text" placeholder="Or roughly when"></div>
-          <div class="field"><label for="f-guests">Guests</label><input id="f-guests" name="guests" type="text" inputmode="numeric" placeholder="About how many"></div>
-        </div>
-        <div class="field"><label for="f-budget">Budget <span class="opt">(optional)</span></label><input id="f-budget" name="budget" type="text"></div>
-        <div class="field"><label for="f-msg">Tell me about it</label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+        <div class="field"><label for="f-date">Date</label><input id="f-date" name="date" type="text" placeholder="Or roughly when"></div>
+        <div class="field"><label for="f-guests">Guests</label><input id="f-guests" name="guests" type="text" inputmode="numeric" placeholder="About how many"></div>
+        <div class="field field-wide"><label for="f-budget">Budget (optional)</label><input id="f-budget" name="budget" type="text"></div>
+        <div class="field field-wide"><label for="f-msg">Tell me about it</label><textarea id="f-msg" name="message" rows="4"></textarea></div>
         <button type="submit" class="btn">Send inquiry</button>
-        <p class="form-thanks" id="thanks" role="status" hidden>Thank you. Your inquiry is on its way, and I'll reply within two days.</p>
+        <p class="form-thanks" id="thanks" role="status" hidden>Thank you. Your inquiry is on its way.</p>
       </form>
-
-      <div class="contact-direct">
-        <p>Prefer to message directly?</p>
-        <a class="direct" href="https://wa.me/12038181036?text=Hi%20Saige%2C%20I%27d%20love%20to%20plan%20something%20with%20you." target="_blank" rel="noopener">WhatsApp</a>
-        <a class="direct" href="mailto:saigeara@gmail.com?subject=Made%20by%20Saige%20inquiry">saigeara@gmail.com</a>
-        <a class="direct" href="https://www.instagram.com/saigegod/" target="_blank" rel="noopener">Instagram</a>
-      </div>
     </div>
 
     <footer class="footer">
@@ -299,9 +299,11 @@
 
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<a class="float-wa" href="https://wa.me/12038181036?text=Hi%20Saige%2C%20I%27d%20love%20to%20plan%20something%20with%20you." target="_blank" rel="noopener" aria-label="Message Saige on WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
