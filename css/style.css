@@ -471,3 +471,48 @@ html:not(.motion) .marquee-row span:nth-child(n+5) { display: none; }
 .faq summary::after { content: "+"; font-family: var(--sans); color: var(--brick); transition: transform .25s; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq details p { margin: 0 0 20px; max-width: 56ch; }
+
+/* =========================================================
+   v11: luxurious opening screen
+   ========================================================= */
+:root { --script: "Pinyon Script", "Snell Roundhand", "Edwardian Script ITC", cursive; }
+
+/* the brand name in script everywhere it appears as a logo */
+.nav-mark, .footer-mark { font-family: var(--script); font-size: 1.9rem; line-height: 1; }
+.nav-mark .mb, .footer-mark .mb { font-style: normal; font-size: .62em; }
+.nav-mark sup, .footer-mark sup { font-size: .32em; }
+
+.hero-photo {
+  position: relative; overflow: hidden;
+  grid-template-columns: 1fr; place-items: center; text-align: center;
+  min-height: 100svh; padding-top: 110px; padding-bottom: 80px;
+  color: var(--ivory);
+}
+.hero-bg { position: absolute; inset: -4% 0 0; z-index: 0; background: radial-gradient(120% 90% at 50% 40%, #5a1712, #2A1912 70%); }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(1.05); }
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(80% 70% at 50% 45%, rgba(42,25,18,.15), rgba(42,25,18,.7) 100%),
+    linear-gradient(180deg, rgba(42,25,18,.55) 0%, rgba(78,10,10,.25) 45%, rgba(42,25,18,.8) 100%);
+}
+.hero-center { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+
+.hero-seal {
+  width: clamp(58px, 6vw, 78px); aspect-ratio: 1; margin-bottom: clamp(10px, 2vh, 20px);
+  border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%;
+  background: radial-gradient(circle at 35% 30%, #e8cb95, var(--gold) 45%, #8f6a32 100%);
+  box-shadow: 0 6px 16px rgba(0,0,0,.45), inset 0 0 0 4px rgba(143,106,50,.45);
+  display: grid; place-items: center;
+}
+.hero-seal span { font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem, 2.8vw, 2.4rem); line-height: 1; color: #5a3d14; margin-top: -.06em; }
+
+.hero-photo .script-mark { font-family: var(--script); font-weight: 400; letter-spacing: 0; line-height: 1; margin: 0; color: var(--ivory); text-shadow: 0 4px 40px rgba(0,0,0,.45); }
+.sm-made { display: block; font-size: clamp(2.2rem, 1rem + 3.4vw, 4.6rem); line-height: 1; margin-bottom: -.25em; }
+.sm-name { display: block; font-size: clamp(6.4rem, 2rem + 14vw, 16rem); line-height: 1; padding: 0 .1em; }
+.sm-name sup { font-family: var(--sans); font-size: .1em; top: 3.4em; margin-left: -1.6em; color: var(--gold); text-shadow: none; }
+.hero-photo .hero-ctas { justify-content: center; margin-top: clamp(18px, 3.5vh, 36px); }
+.hero-photo .btn-line { border-color: rgba(242,237,230,.7); }
+@media (max-width: 860px) {
+  .hero-photo { padding-top: 90px; padding-bottom: 60px; min-height: 92svh; }
+}

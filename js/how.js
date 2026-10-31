@@ -1,38 +1,10 @@
 /* =========================================================
    Made by Saige™ — How it works page
-   1. Saige's to-do list gets crossed off as you scroll past it
-   2. The "Which one is for me?" quiz
+   The "Which one is for me?" quiz
    Works on its own (no animation library needed).
    ========================================================= */
 (function () {
-  /* ---------- 1. crossing off the to-do list ---------- */
-  const items = [...document.querySelectorAll('.todo-long li')];
-  const yours = [...document.querySelectorAll('.todo-short li')];
-  const countEl = document.querySelector('.count-done');
-  let queued = false;
-
-  const update = () => {
-    queued = false;
-    const line = window.innerHeight * 0.6;
-    let done = 0;
-    items.forEach((li) => {
-      const isDone = li.getBoundingClientRect().top < line;
-      li.classList.toggle('done', isDone);
-      if (isDone) done++;
-    });
-    if (countEl) countEl.textContent = done;
-    // your three items tick off at the end of my list
-    const share = done / items.length;
-    yours.forEach((li, i) => li.classList.toggle('done', share >= [0.34, 0.67, 1][i]));
-  };
-  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
-  if (items.length) {
-    window.addEventListener('scroll', queue, { passive: true });
-    window.addEventListener('resize', queue);
-    update();
-  }
-
-  /* ---------- 2. the quiz ---------- */
+  /* ---------- the quiz ---------- */
   const quiz = document.querySelector('.quiz');
   if (!quiz) return;
   const answers = {};

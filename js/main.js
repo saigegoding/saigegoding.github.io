@@ -53,14 +53,13 @@
     });
   });
 
-  /* ---------- the signature moment: the invitation opens by itself ---------- */
-  if (document.querySelector('.envelope')) {
-    gsap.timeline({ delay: 0.6 })
-      .to('.seal', { scale: 1.2, rotate: -18, autoAlpha: 0, duration: 0.45, ease: 'power1.in' })
-      .to('.env-flap', { rotateX: 180, duration: 0.7, ease: 'power2.inOut' }, '-=0.15')
-      .set('.env-flap', { zIndex: 1 }, '-=0.3')
-      .to('.invite', { yPercent: -50, duration: 0.9, ease: 'back.out(1.3)' }, '-=0.15')
-      .from('.confetti i', { scale: 0, y: 30, autoAlpha: 0, stagger: 0.05, duration: 0.5, ease: 'back.out(2)' }, '-=0.6');
+  /* ---------- the opening: the candlelit table settles in, the name rises ---------- */
+  if (document.querySelector('.hero-photo')) {
+    gsap.from('.hero-bg img', { scale: 1.14, duration: 2.6, ease: 'power2.out' });
+    gsap.from('.hero-seal, .sm-made, .sm-name, .hero-ctas', { y: 26, autoAlpha: 0, duration: 1.1, stagger: 0.16, ease: 'power3.out', delay: 0.25 });
+    // as you scroll away the photo drifts and zooms slightly, the name fades
+    gsap.to('.hero-bg', { yPercent: 14, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.hero-photo', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero-center', { y: -60, autoAlpha: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero-photo', start: 'top top', end: 'bottom top', scrub: true } });
   }
 
   /* ---------- brand names slide with the scroll (like the first version) ---------- */

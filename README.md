@@ -11,11 +11,11 @@ Two signatures:
 | File / folder | What it does |
 |---|---|
 | `index.html` | The homepage |
-| `how-it-works.html` | The "How it works" page: two to-do lists, five steps, example plan, quiz, questions |
+| `how-it-works.html` | The "How it works" page: five steps, the "Which one is for me?" quiz, example plan, questions |
 | `portfolio.html` | The "Past events" page |
 | `css/style.css` | Colours, fonts and layout for all pages |
-| `js/main.js` | Effects: the envelope opening, colour changes, brand names sliding, photo zooms, phone booking bar |
-| `js/how.js` | The to-do list that crosses itself off, and the quiz |
+| `js/main.js` | Effects: the opening screen, colour changes, brand names sliding, photo zooms, phone booking bar |
+| `js/how.js` | The "Which one is for me?" quiz |
 | `js/portfolio.js` | Filters and pop-ups on the past events page |
 | `images/` | Photos, favicon and the preview image for shared links |
 
