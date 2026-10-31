@@ -10,29 +10,33 @@ Two signatures:
 
 | File | What it does |
 |---|---|
-| `index.html` | All the text and the page structure |
-| `css/style.css` | Colours, fonts and layout |
-| `js/main.js` | Scroll effects: the envelope opening, colour changes, the sideways evening, zooms |
+| `index.html` | The homepage: hero, the two offers, three steps, past-events teaser, about, booking form |
+| `portfolio.html` | The "Past events" page with filters and a pop-up per event |
+| `css/style.css` | Colours, fonts and layout for both pages |
+| `js/main.js` | Effects: the envelope opening, colour changes, photo zooms, phone booking bar |
+| `js/portfolio.js` | Filters and pop-ups on the past events page |
 | `images/` | Event photos, Saige's portrait, favicon and the preview image for shared links |
 
 ## Changing text
 
-Open `index.html` on GitHub, click the pencil icon, edit the words between the tags, and click **Commit changes**. The live site updates within a minute or two.
+Open a file on GitHub, click the pencil icon, edit the words between the tags, and click **Commit changes**. The live site updates within a minute or two.
 
-## Placeholder photos (important)
+## Past events page
 
-Every `<img class="stock" ...>` in `index.html` is a free Unsplash placeholder, loaded straight from images.unsplash.com.
-They're there for the look only, so replace them with photos of Saige's own work as soon as she has them:
+Each event has two parts in `portfolio.html`, linked by the same id:
+1. a card: `<button class="pf-card" ... data-case="burgundy">` (photo, label, title, one line)
+2. its details: `<div class="case" id="case-burgundy" hidden>` (photos, the occasion, the route, how it felt)
 
-1. Upload the photo into `images/` (keep it under ~400 KB, about 1600 px on the long side).
-2. In `index.html`, change that image's `src="https://images.unsplash.com/..."` to `src="images/your-photo.jpg"`, update the `alt` description, and remove `class="stock"` (that class adds the warm filter used to blend the stock photos in).
+To add a real event, copy both parts, give them a new id, and swap the text and photos.
+`data-cat` decides which filter it shows under: `course`, `regular` or `brand`.
 
-Where they are:
-- **Course by Course**: the four evening stops (first pour, long table, toast, last room)
-- **Like a Regular**: the two photos beside the intro
-- **Scenes from the table**: five of the seven photos (the two `images/event-*.jpg` ones are real)
+**Sample events:** five of the six events are invented examples, marked with a "Sample event" badge and a note in the pop-up.
+Replace them with real events as soon as possible, and remove the badge and note only for real ones.
 
-To add more photos to "Scenes from the table", copy a `<figure class="scene">` block.
+## Placeholder photos
+
+Every `<img class="stock" ...>` is a free Unsplash placeholder loaded from images.unsplash.com.
+To swap one: upload your photo into `images/`, change its `src` to `images/your-photo.jpg`, update the `alt` text, and remove `class="stock"`.
 
 ## Contact form
 
