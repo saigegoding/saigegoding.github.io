@@ -58,34 +58,39 @@
   mm.add({ desktop: '(min-width: 861px)', mobile: '(max-width: 860px)' }, (ctx) => {
     const { desktop } = ctx.conditions;
 
-    /* ---------- 1. hero: zoom out from the sun, title becomes the logo ---------- */
-    const navMark = document.querySelector('.nav-mark');
-    gsap.set(navMark, { autoAlpha: 0, y: -8 });
-
-    const hero = gsap.timeline({
+    /* ---------- 1. hero: the invitation opens ----------
+       seal lifts, flap opens, the card slides out, then grows until it fills the screen */
+    const flap = document.querySelector('.env-flap');
+    const invite = document.querySelector('.invite');
+    const cover = () => {
+      // how much the card must grow to cover the whole screen
+      const r = invite.getBoundingClientRect();
+      const s = gsap.getProperty(invite, 'scale') || 1;
+      return Math.max(window.innerWidth / (r.width / s), window.innerHeight / (r.height / s)) * 1.15;
+    };
+    gsap.timeline({
       scrollTrigger: {
         trigger: '.hero',
         start: 'top top',
-        end: desktop ? '+=110%' : 'bottom top',
-        scrub: true,
-        pin: desktop,
+        end: '+=170%',
+        scrub: 0.6,
+        pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true
       }
-    });
-    hero
-      .fromTo('.hero-window img', { scale: 1.5 }, { scale: 1, ease: 'none', duration: 1 }, 0)
-      .to('.hero-sky', { opacity: 0, ease: 'none', duration: 1 }, 0)
-      .to('.hero-title', { y: desktop ? -80 : -40, scale: desktop ? 0.9 : 1, transformOrigin: 'left top', autoAlpha: 0, ease: 'power1.in', duration: 0.6 }, 0.35)
-      .to('.hero-scroll', { autoAlpha: 0, duration: 0.15 }, 0)
-      .to(navMark, { autoAlpha: 1, y: 0, duration: 0.25 }, 0.7);
-    if (desktop) {
-      const win = document.querySelector('.hero-window');
-      hero.to(win, {
-        scale: 1.06, ease: 'power1.inOut', duration: 1,
-        x: () => { const r = win.getBoundingClientRect(); const cur = gsap.getProperty(win, 'x'); return window.innerWidth / 2 - (r.left - cur + r.width / 2); }
-      }, 0);
-    }
+    })
+      .to('.hero-scroll', { autoAlpha: 0, duration: 0.1 }, 0)
+      .to('.place-a', { x: desktop ? -120 : -40, y: -60, rotate: -16, autoAlpha: 0, duration: 0.3, ease: 'power1.in' }, 0.04)
+      .to('.place-b', { x: desktop ? 120 : 40, y: -40, rotate: 15, autoAlpha: 0, duration: 0.3, ease: 'power1.in' }, 0.06)
+      .to('.confetti i', { y: (i) => -(120 + (i % 4) * 90), rotate: (i) => (i % 2 ? 90 : -120), autoAlpha: 0, duration: 0.5, ease: 'none', stagger: 0.01 }, 0)
+      .to('.seal', { scale: 1.25, autoAlpha: 0, rotate: -18, duration: 0.18, ease: 'power1.in' }, 0)
+      .to(flap, { rotateX: 180, duration: 0.25, ease: 'power1.inOut' }, 0.08)
+      .set(flap, { zIndex: 1 }, 0.22)
+      .to(invite, { yPercent: -56, duration: 0.3, ease: 'power2.out' }, 0.3)
+      .to('.hero-kicker, .hero-line', { autoAlpha: 0, duration: 0.15 }, 0.55)
+      .to('.env-back, .env-front, .env-flap', { yPercent: 70, autoAlpha: 0, duration: 0.25, ease: 'power1.in' }, 0.62)
+      .to(invite, { yPercent: 0, y: () => window.innerHeight / 2 - (document.querySelector('.envelope').getBoundingClientRect().top + document.querySelector('.envelope').offsetHeight / 2), scale: cover, boxShadow: 'none', duration: 0.38, ease: 'power2.in' }, 0.62)
+      .to('.invite > *', { autoAlpha: 0, duration: 0.15 }, 0.72);
 
     /* ---------- 2. statement: words light up one by one ---------- */
     gsap.fromTo('.statement-text .w', { opacity: 0.22 }, {
@@ -99,15 +104,15 @@
       }
     });
 
-    /* ---------- 3. what I make: vertical scroll becomes horizontal ---------- */
+    /* ---------- 3. Course by Course: the evening moves sideways, each photo zooms out ---------- */
     if (desktop) {
-      const track = document.querySelector('.make-track');
+      const track = document.querySelector('.course-track');
       const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
-      gsap.to(track, {
+      const slide = gsap.to(track, {
         x: () => -dist(),
         ease: 'none',
         scrollTrigger: {
-          trigger: '.make',
+          trigger: '.course',
           start: 'top top',
           end: () => '+=' + dist(),
           scrub: 0.6,
@@ -115,11 +120,21 @@
           invalidateOnRefresh: true
         }
       });
+      gsap.utils.toArray('.panel-stop').forEach((panel) => {
+        gsap.fromTo(panel.querySelector('img'), { scale: 1.35 }, {
+          scale: 1, ease: 'none',
+          scrollTrigger: { trigger: panel, containerAnimation: slide, start: 'left right', end: 'center center', scrub: true }
+        });
+      });
+    } else {
+      gsap.utils.toArray('.stop-photo img').forEach((img) => {
+        gsap.fromTo(img, { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: img, start: 'top bottom', end: 'center center', scrub: true } });
+      });
     }
 
-    /* ---------- 4. New York: photos drift, map draws itself, neighbourhoods light up ---------- */
-    gsap.fromTo('.ny-photo-a img', { yPercent: -6, scale: 1.12 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '.ny-intro', start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.fromTo('.ny-photo-b', { y: 60 }, { y: -60, ease: 'none', scrollTrigger: { trigger: '.ny-intro', start: 'top bottom', end: 'bottom top', scrub: true } });
+    /* ---------- 4. Like a Regular: photos drift, map draws itself, neighbourhoods light up ---------- */
+    gsap.fromTo('.reg-photo-a img', { yPercent: -6, scale: 1.14 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '.reg-intro', start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.fromTo('.reg-photo-b', { y: 70 }, { y: -70, ease: 'none', scrollTrigger: { trigger: '.reg-intro', start: 'top bottom', end: 'bottom top', scrub: true } });
 
     document.querySelectorAll('.ny-map .land, .ny-map .park').forEach((p) => {
       const len = p.getTotalLength();
@@ -142,19 +157,21 @@
       });
     });
 
-    /* ---------- 5. beyond New York: the window opens up ---------- */
-    gsap.timeline({ scrollTrigger: { trigger: '.beyond', start: 'top bottom', end: 'center center', scrub: true } })
-      .fromTo('.beyond-window', { scale: 0.7 }, { scale: 1, ease: 'none' }, 0)
-      .fromTo('.beyond-window img', { scale: 1.5 }, { scale: 1, ease: 'none' }, 0);
-    gsap.fromTo('.beyond-small', { y: 80 }, { y: -80, ease: 'none', scrollTrigger: { trigger: '.beyond', start: 'top bottom', end: 'bottom top', scrub: true } });
+    /* ---------- 5. scenes: each photo opens up and zooms out ---------- */
+    gsap.utils.toArray('.scene-frame').forEach((f) => {
+      gsap.timeline({ scrollTrigger: { trigger: f, start: 'top bottom', end: 'center 60%', scrub: true } })
+        .fromTo(f, { clipPath: 'inset(16% 12% 16% 12%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none' }, 0)
+        .fromTo(f.querySelector('img'), { scale: 1.4 }, { scale: 1, ease: 'none' }, 0);
+    });
 
-    /* ---------- 6. brand names slide with the scroll ---------- */
-    gsap.fromTo('.marquee-row', { xPercent: 0 }, { xPercent: -50, ease: 'none', scrollTrigger: { trigger: '.been', start: 'top bottom', end: 'bottom top', scrub: true } });
-
-    /* ---------- 8. about: portrait settles in ---------- */
+    /* ---------- 7. about: portrait settles in ---------- */
     gsap.fromTo('.about-photo img', { scale: 1.18 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'center center', scrub: true } });
 
-    return () => gsap.set(navMark, { clearProps: 'all' });
+    /* ---------- 8. contact icons zoom in ---------- */
+    gsap.fromTo('.icons .icon', { scale: 0.4, autoAlpha: 0 }, {
+      scale: 1, autoAlpha: 1, stagger: 0.12, ease: 'back.out(1.6)',
+      scrollTrigger: { trigger: '.icons', start: 'top 92%', end: 'top 62%', scrub: true }
+    });
   });
 
   /* ---------- day to night: the page colour follows the section in view ----------
