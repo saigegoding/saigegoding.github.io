@@ -7,12 +7,8 @@
   const cards = [...document.querySelectorAll('.pf-card')];
   const chips = [...document.querySelectorAll('.chip')];
   const dialog = document.querySelector('.case-dialog');
-  const slides = dialog.querySelector('.cd-slides');
-  const dots = dialog.querySelector('.cd-dots');
+  const media = dialog.querySelector('.cd-media');
   const body = dialog.querySelector('.cd-body');
-  const prev = dialog.querySelector('.cd-prev');
-  const next = dialog.querySelector('.cd-next');
-  let index = 0, count = 0;
 
   /* ---------- filters ---------- */
   chips.forEach((chip) => chip.addEventListener('click', () => {
@@ -22,58 +18,27 @@
     if (window.ScrollTrigger) ScrollTrigger.refresh();
   }));
 
-  /* ---------- photo browsing inside the pop-up ---------- */
-  const show = (i) => {
-    if (!count) return;
-    index = (i + count) % count;
-    [...slides.children].forEach((el, n) => el.classList.toggle('is-on', n === index));
-    [...dots.children].forEach((el, n) => { el.classList.toggle('is-on', n === index); el.setAttribute('aria-selected', n === index); });
-  };
-  prev.addEventListener('click', () => show(index - 1));
-  next.addEventListener('click', () => show(index + 1));
-  dialog.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') show(index - 1);
-    if (e.key === 'ArrowRight') show(index + 1);
-  });
-  // swipe on phones
-  let startX = null;
-  slides.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
-  slides.addEventListener('touchend', (e) => {
-    if (startX === null) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
-    startX = null;
-  });
-
   /* ---------- open / close ---------- */
   const open = (id) => {
     const src = document.getElementById('case-' + id);
     if (!src) return;
-    // photos: bigger versions for the large panel
+    // photos: all shown at once, laid out to fit the panel
     const imgs = [...src.querySelectorAll('.case-gallery img')];
-    slides.innerHTML = '';
-    dots.innerHTML = '';
-    imgs.forEach((img, n) => {
+    media.innerHTML = '';
+    imgs.forEach((img) => {
       const c = img.cloneNode(true);
-      c.src = c.getAttribute('src').replace('w=900', 'w=1600');
-      c.loading = n === 0 ? 'eager' : 'lazy';
+      c.src = c.getAttribute('src').replace('w=900', 'w=1200');
+      c.loading = 'eager';
       const fig = document.createElement('figure');
       fig.appendChild(c);
-      slides.appendChild(fig);
-      const d = document.createElement('button');
-      d.setAttribute('role', 'tab');
-      d.setAttribute('aria-label', 'Photo ' + (n + 1));
-      d.addEventListener('click', () => show(n));
-      dots.appendChild(d);
+      media.appendChild(fig);
     });
-    count = imgs.length;
-    dialog.classList.toggle('single', count < 2);
+    media.dataset.count = Math.min(imgs.length, 3);
     // story
     body.innerHTML = src.querySelector('.case-body').innerHTML;
     if (window.__lenis) window.__lenis.stop();
     dialog.showModal();
     body.scrollTop = 0;
-    show(0);
     history.replaceState(null, '', '#' + id);
   };
   const close = () => dialog.close();
