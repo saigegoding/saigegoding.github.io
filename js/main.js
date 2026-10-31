@@ -20,6 +20,9 @@
   document.querySelectorAll('[data-pick]').forEach((b) => b.addEventListener('click', () => {
     if (select) select.value = b.dataset.pick;
   }));
+  // links like index.html?pick=Like%20a%20Regular#book (from the quiz) pre-select too
+  const pick = new URLSearchParams(location.search).get('pick');
+  if (select && pick) select.value = pick;
 
   const motion = root.classList.contains('motion');
   if (!motion || !window.gsap || !window.ScrollTrigger) {
@@ -58,6 +61,22 @@
       .set('.env-flap', { zIndex: 1 }, '-=0.3')
       .to('.invite', { yPercent: -50, duration: 0.9, ease: 'back.out(1.3)' }, '-=0.15')
       .from('.confetti i', { scale: 0, y: 30, autoAlpha: 0, stagger: 0.05, duration: 0.5, ease: 'back.out(2)' }, '-=0.6');
+  }
+
+  /* ---------- brand names slide with the scroll (like the first version) ---------- */
+  if (document.querySelector('.marquee-row')) {
+    gsap.fromTo('.marquee-row', { xPercent: 0 }, {
+      xPercent: -50, ease: 'none',
+      scrollTrigger: { trigger: '.brands-band', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+  }
+
+  /* ---------- How it works: the example plan swings into place ---------- */
+  if (document.querySelector('.plan-card')) {
+    gsap.fromTo('.plan-card', { rotate: 7, y: 80, scale: 0.92 }, {
+      rotate: -2, y: 0, scale: 1, ease: 'none',
+      scrollTrigger: { trigger: '.plan', start: 'top bottom', end: 'center 55%', scrub: true }
+    });
   }
 
   /* ---------- photos zoom out gently as they scroll in ---------- */

@@ -8,14 +8,23 @@ Two signatures:
 
 ## What's in here
 
-| File | What it does |
+| File / folder | What it does |
 |---|---|
-| `index.html` | The homepage: hero, the two offers, three steps, past-events teaser, about, booking form |
-| `portfolio.html` | The "Past events" page with filters and a pop-up per event |
-| `css/style.css` | Colours, fonts and layout for both pages |
-| `js/main.js` | Effects: the envelope opening, colour changes, photo zooms, phone booking bar |
+| `index.html` | The homepage |
+| `how-it-works.html` | The "How it works" page: two to-do lists, five steps, example plan, quiz, questions |
+| `portfolio.html` | The "Past events" page |
+| `css/style.css` | Colours, fonts and layout for all pages |
+| `js/main.js` | Effects: the envelope opening, colour changes, brand names sliding, photo zooms, phone booking bar |
+| `js/how.js` | The to-do list that crosses itself off, and the quiz |
 | `js/portfolio.js` | Filters and pop-ups on the past events page |
-| `images/` | Event photos, Saige's portrait, favicon and the preview image for shared links |
+| `images/` | Photos, favicon and the preview image for shared links |
+
+## Uploading changes
+
+Keep the folders: files in `css/`, `js/` and `images/` must stay inside those folders on GitHub.
+The safest way is to open the folder on GitHub (e.g. click `css`), then **Add file → Upload files** and drop the file in there.
+
+After changing anything in `css/` or `js/`, raise the number after `?v=` where it's linked in **all three** HTML files (e.g. `?v=10` → `?v=11`). That makes every browser load the new version instead of an old saved copy.
 
 ## Changing text
 
