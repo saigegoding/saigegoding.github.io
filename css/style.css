@@ -475,7 +475,7 @@ html:not(.motion) .marquee-row span:nth-child(n+5) { display: none; }
 /* =========================================================
    v11: luxurious opening screen
    ========================================================= */
-:root { --script: "Great Vibes", "Snell Roundhand", cursive; --caps: "Italiana", "Didot", Georgia, serif; }
+:root { --script: "Allura", "Snell Roundhand", cursive; --caps: "Italiana", "Didot", Georgia, serif; }
 
 /* the brand name in script everywhere it appears as a logo */
 .nav-mark, .footer-mark { font-family: var(--script); font-size: 2rem; line-height: 1; display: inline-flex; align-items: center; }
@@ -508,7 +508,7 @@ html:not(.motion) .marquee-row span:nth-child(n+5) { display: none; }
 .hero-seal span { font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem, 2.8vw, 2.4rem); line-height: 1; color: #5a3d14; margin-top: -.06em; }
 
 .hero-photo .script-mark { font-family: var(--script); font-weight: 400; letter-spacing: 0; line-height: 1; margin: 0; color: var(--ivory); text-shadow: 0 4px 40px rgba(0,0,0,.45); }
-.sm-made { display: block; font-family: var(--caps); text-transform: uppercase; letter-spacing: .45em; padding-left: .45em; font-size: clamp(.95rem, .6rem + 1.1vw, 1.55rem); line-height: 1; margin-bottom: .1em; text-shadow: 0 2px 20px rgba(0,0,0,.5); }
+.sm-made { display: block; font-family: var(--caps); text-transform: uppercase; letter-spacing: .45em; padding-left: .45em; font-size: clamp(.95rem, .6rem + 1.1vw, 1.55rem); line-height: 1; margin-bottom: .6em; text-shadow: 0 2px 20px rgba(0,0,0,.5); }
 .sm-name { display: block; font-size: clamp(6rem, 2rem + 13vw, 15rem); line-height: 1.05; padding: 0 .15em; }
 .sm-name sup { font-family: var(--sans); font-size: .09em; top: 2.6em; margin-left: -.6em; color: var(--gold); text-shadow: none; }
 .hero-photo .hero-ctas { justify-content: center; margin-top: clamp(18px, 3.5vh, 36px); }
