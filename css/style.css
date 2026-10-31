@@ -475,11 +475,11 @@ html:not(.motion) .marquee-row span:nth-child(n+5) { display: none; }
 /* =========================================================
    v11: luxurious opening screen
    ========================================================= */
-:root { --script: "Pinyon Script", "Snell Roundhand", "Edwardian Script ITC", cursive; }
+:root { --script: "Great Vibes", "Snell Roundhand", cursive; --caps: "Italiana", "Didot", Georgia, serif; }
 
 /* the brand name in script everywhere it appears as a logo */
-.nav-mark, .footer-mark { font-family: var(--script); font-size: 1.9rem; line-height: 1; }
-.nav-mark .mb, .footer-mark .mb { font-style: normal; font-size: .62em; }
+.nav-mark, .footer-mark { font-family: var(--script); font-size: 2rem; line-height: 1; display: inline-flex; align-items: center; }
+.nav-mark .mb, .footer-mark .mb { font-family: var(--caps); font-style: normal; text-transform: uppercase; letter-spacing: .28em; font-size: .36em; margin-right: .55em; }
 .nav-mark sup, .footer-mark sup { font-size: .32em; }
 
 .hero-photo {
@@ -508,11 +508,24 @@ html:not(.motion) .marquee-row span:nth-child(n+5) { display: none; }
 .hero-seal span { font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem, 2.8vw, 2.4rem); line-height: 1; color: #5a3d14; margin-top: -.06em; }
 
 .hero-photo .script-mark { font-family: var(--script); font-weight: 400; letter-spacing: 0; line-height: 1; margin: 0; color: var(--ivory); text-shadow: 0 4px 40px rgba(0,0,0,.45); }
-.sm-made { display: block; font-size: clamp(2.2rem, 1rem + 3.4vw, 4.6rem); line-height: 1; margin-bottom: -.25em; }
-.sm-name { display: block; font-size: clamp(6.4rem, 2rem + 14vw, 16rem); line-height: 1; padding: 0 .1em; }
-.sm-name sup { font-family: var(--sans); font-size: .1em; top: 3.4em; margin-left: -1.6em; color: var(--gold); text-shadow: none; }
+.sm-made { display: block; font-family: var(--caps); text-transform: uppercase; letter-spacing: .45em; padding-left: .45em; font-size: clamp(.95rem, .6rem + 1.1vw, 1.55rem); line-height: 1; margin-bottom: .1em; text-shadow: 0 2px 20px rgba(0,0,0,.5); }
+.sm-name { display: block; font-size: clamp(6rem, 2rem + 13vw, 15rem); line-height: 1.05; padding: 0 .15em; }
+.sm-name sup { font-family: var(--sans); font-size: .09em; top: 2.6em; margin-left: -.6em; color: var(--gold); text-shadow: none; }
 .hero-photo .hero-ctas { justify-content: center; margin-top: clamp(18px, 3.5vh, 36px); }
 .hero-photo .btn-line { border-color: rgba(242,237,230,.7); }
 @media (max-width: 860px) {
   .hero-photo { padding-top: 90px; padding-bottom: 60px; min-height: 92svh; }
 }
+
+/* ---------- photo opening for inner pages (How it works) ---------- */
+.page-hero {
+  position: relative; overflow: hidden; color: var(--ivory);
+  min-height: 78svh; display: grid; place-items: center; text-align: center;
+  padding-top: 120px; padding-bottom: 72px;
+}
+.page-hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.page-hero .page-title { font-family: var(--script); font-weight: 400; font-size: clamp(4.2rem, 2rem + 8vw, 9.5rem); line-height: 1.05; letter-spacing: 0; color: var(--ivory); text-shadow: 0 4px 40px rgba(0,0,0,.45); }
+.page-hero .hw-lede { color: var(--ivory); max-width: 32ch; margin: .3em auto 1.3em; text-shadow: 0 2px 20px rgba(0,0,0,.5); }
+.page-hero .jump { justify-content: center; }
+.page-hero .jump a { border-color: rgba(242,237,230,.55); color: var(--ivory); backdrop-filter: blur(4px); }
+.page-hero .jump a:hover { background: var(--ivory); color: var(--chocolate); border-color: var(--ivory); }

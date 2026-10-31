@@ -62,6 +62,13 @@
     gsap.to('.hero-center', { y: -60, autoAlpha: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero-photo', start: 'top top', end: 'bottom top', scrub: true } });
   }
 
+  /* ---------- inner-page photo opening (How it works): same feel as the front page ---------- */
+  if (document.querySelector('.page-hero')) {
+    gsap.from('.page-hero .hero-bg img', { scale: 1.14, duration: 2.6, ease: 'power2.out' });
+    gsap.from('.page-title, .page-hero .hw-lede, .page-hero .jump', { y: 24, autoAlpha: 0, duration: 1.1, stagger: 0.15, ease: 'power3.out', delay: 0.2 });
+    gsap.to('.page-hero .hero-bg', { yPercent: 14, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.page-hero', start: 'top top', end: 'bottom top', scrub: true } });
+  }
+
   /* ---------- brand names slide with the scroll (like the first version) ---------- */
   if (document.querySelector('.marquee-row')) {
     gsap.fromTo('.marquee-row', { xPercent: 0 }, {
